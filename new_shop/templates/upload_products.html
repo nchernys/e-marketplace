@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{%load crispy_forms_tags %}
+
+{% block body %}
+
+<div class="central">
+    <div class="central-inner">
+        <div class="admin-page-upload">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form|crispy}}
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

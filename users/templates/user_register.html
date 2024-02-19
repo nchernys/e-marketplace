@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+{% load crispy_forms_tags %}
+
+
+<div class="central central-inner">
+    <div class="login-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br> <button type="submit" style="background-color: #fca311; color: white;">Register</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

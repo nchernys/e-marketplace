@@ -1,0 +1,99 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<div class="central cart">
+    <div class="cart-inner">
+        <table>
+            {% for item in my_cart %}
+            <tr>
+                <td>
+                    <div class="cart-table-img"><img src=" {{item.product_id.image.url}}" alt="image">
+                    </div>
+                </td>
+                <td>
+                    <div><strong>{{item.product_id.name}}</strong></div>
+                    <div><strong>ID:</strong>ABCD{{item.id}}</div>
+                </td>
+                <td class="hide">
+                    <div>{{item.product_id.description}} </div>
+                </td>
+                <td>
+                    <div><strong>Item:</strong> $
+                        {{item.product_id.price}}</div>
+                </td>
+                <td>
+                    <strong>Quantity:</strong>
+                    <div style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; ">
+                        <a href="{% url 'deduct_quantity' item.id %}">
+                            <span class="m5 change-quantity" style="margin-right: 0.5em;">
+                                &#8211; </span>
+                        </a>
+                        {{item.quantity}}
+                        <a href="{% url 'add_quantity' item.id %}">
+                            <span class="change-quantity m5" style="margin-left: 0.5em;">
+                                &plus; </span>
+                        </a>
+                    </div>
+                    <div>
+                        <div><strong>Cost:</strong>
+                            $ {{item.total_price_per_item|floatformat:2}}</div>
+                        
+                        <div>{% if item.product_id.on_sale > 0 %} <span class="on_sale" style="margin-left: 0;"> &#8211;
+                            {{item.product_id.on_sale}}%
+                        </span>
+                        <span class="discounted_price">${{item.discounted_price|floatformat:2}} </span>
+                        {% endif %}
+                   	 </div>
+		
+
+                    <div class="m5">
+                        <a href="{% url 'delete_item' item.id %}" style="color: red;  text-decoration: none;">
+                            Remove
+                        </a>
+                    </div>
+
+                </td>
+            </tr>
+
+            {% endfor %}
+
+            {% if my_cart %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="hide"></td>
+                <td></td>
+                <td>
+                    <div class="cart-total">
+                        <div><strong>Total: </strong>
+                            ${{total_to_pay|floatformat:2}}</div>
+
+                        <div class="btn-order"> Order</div>
+                    </div>
+                </td>
+            </tr>
+            {% endif %}
+
+        </table>
+        {% if not my_cart %}
+        <div style="width: 100%; margin: 5em 0 0 0;">
+            <a href="{% url 'index' %}" style="color: #979797;">
+                <h3>Your cart is empty.</h3>
+            </a> <br> <a href="{% url 'index' %}" style="color: #979797;"> <img width="20" height="20"
+                    src="https://img.icons8.com/android/24/979797/left3.png" alt="left3" /> Start to shopping </a>
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+{% if my_cart %}
+<div style="width: 90%; margin: 2em auto 3em auto;">
+    <a href="{% url 'index' %}" style="color: #979797;"> <img width="20" height="20"
+            src="https://img.icons8.com/android/24/979797/left3.png" alt="left3" /> Go back to shopping </a>
+</div>
+{% endif %}
+
+</div>
+
+{% endblock %}

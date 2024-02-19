@@ -1,0 +1,147 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups http://shop-online.chernysn.tech">
+    <title>Variety Online Store (Mock-up project)</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/nav-header-footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login-registration.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product-card.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pricing-discounts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product-details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search-results.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media-queries.css' %}">
+
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="left-bar">
+            <div class="nav-brand">
+                <a href="{% url 'index' %}"><b>Variety</b></a>
+            </div>
+        </div>
+
+        <div class="nav-wrapper">
+            <div class="central-bar">
+                <span>
+                    <form action="{% url 'search' %}" method="POST" class="right-bar-gap">
+                        {% csrf_token %}
+                        <input type="search" name="search" class="search-field" placeholder="Search" required
+                            autocomplete="off">
+                        <button type="submit"
+                            style="width: 5em; height: 1.8em; border-radius: 1em; background-color: #48cae4; color: white; ">Search</button>
+                    </form>
+                </span>
+
+                <div class="cat-dropdown">
+                    <div class="cat-heading" id="cat-heading">Categories</div>
+                    <div class="cat-options" id="cat-options">
+                        {% for category in all_categories %}
+                        <a href="{% url 'category' category.id %}">
+                            <option value="{{category.name}}">{{category.name}}</option>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-bar">
+                {% if not user.is_authenticated %}
+                <a href="{% url 'login' %}" class="right-bar-gap">Login </a>
+
+                <span style="display: flex; flex-direction: row;"><a href="{% url 'cart' %}"
+                        class="right-bar-gap">Cart</a>
+                    <div class="cart-num">{{num_items_cart}}</div>
+                </span>
+                {% else %}
+                <span class="right-bar-gap nav-greet">Hello, {{user.username}}! </span>
+                <a href="{% url 'logout' %}" class="right-bar-gap">Logout </a>
+                <span style="display: flex; flex-direction: row;"><a href="{% url 'cart' %}"
+                        class="right-bar-gap">Cart</a>
+                    <div class="cart-num">{{num_items_cart}}</div>
+                </span>
+
+                {% endif %}
+                {% if user.is_superuser %}
+                <a href="{% url 'admin_manage' %}" class="right-bar-gap">Admin</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="body">
+        {% block body %}
+        <div>
+            {% include 'blocks/sales.html' %}
+        </div>
+        <div class="heading-shop">
+            <h4>Trending now ...</h4>
+        </div>
+
+        {% include 'blocks/products.html' %}
+
+        <div class="heading-shop">
+            <h4>Explore discounts</h4>
+        </div>
+
+        <div class="scroll ads">
+            {% include 'blocks/ad.html' %}
+        </div>
+
+        <div class="heading-shop">
+            <h4>Special offers for you!</h4>
+        </div>
+        <div class="scroll ads">
+            {% include 'blocks/coupon.html' %}
+        </div>
+
+        {% endblock body %}
+
+    </div>
+
+    <div class="footer">
+        <a href="https://portfolio.chernysn.tech">WebDev</a>
+    </div>
+
+
+    <script>
+        let cat_btn = document.getElementById("cat-heading");
+        let cat_opt = document.getElementById("cat-options");
+
+        cat_btn.addEventListener('click', () => {
+
+            if (cat_opt.style.display == "block") {
+                cat_opt.style.display = "none";
+            } else {
+                cat_opt.style.display = "block";
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+

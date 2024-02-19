@@ -1,0 +1,13 @@
+.search-output {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.search-output h4 {
+  padding: 0.5em 0 1em;
+}

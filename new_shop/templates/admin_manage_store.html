@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<div class="central">
+    <div class="admin-page">
+        <table>
+            <thead>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Category</td>
+                <td>Price</td>
+                <td>Sale</td>
+                <td>Edit</td>
+            </thead>
+            {% for product in all_products %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>
+                    {% for category in product.category_id.all %}
+                    {{category.name}}{% if forloop.last %} {% else %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>${{product.price}}</td>
+                <td>{{product.on_sale}}%</td>
+                <td><a href="{% url 'update_products' product.id %}">Edit</a>
+ <a href="{% url 'delete_products' product.id %}">Delete</a>
+</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        <div class="admin-upload-btn">
+            <a href="upload_products"><button>Upload new products</button></a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

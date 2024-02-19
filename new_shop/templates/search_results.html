@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+{% include 'blocks/sales.html' %}
+
+<div class="central-inner" style="margin-bottom: 2em; ">
+
+    {% if search_results %}
+    <div class="search-output">
+        <h4>You searched for "{{search}}": </h4>
+        {% for result in search_results %}
+        <div class="product_details_card">
+            <div style="overflow: hidden; width: 30%; height: 30%">
+                <img src="{{result.image.url}}" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div class="product_details_card_body">
+                <div>
+                    <p><strong>{{result.name}}</strong></p>
+                    <p>{{result.description}}</p>
+                    <p>$ {{result.price}}
+                    {% if result.on_sale > 0 %}
+                    <span class="on_sale"> &#8211;{{result.on_sale}}% </span> <span
+                        style="color: red; margin: 0 0 0 1em;">
+                        <strong>$ {{result.discounted_price|floatformat:2}}</strong></span>
+                    {% endif %}
+		</p>
+                </div>
+                <div>
+                    <form action="{% url 'add_cart' result.id %}" method="POST">
+                        {% csrf_token %}
+                        <div style="padding: 0 0 1em;">{{form.quantity}}</a>
+                        </div>
+                        <button type="submit" style="background-color: #48cae4; color: white; ">Add
+                            to cart</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <div class="search-output">
+        <p style="opacity: .5;"><i>Nothing was found. Try another search...</i></p>
+    </div>
+    {% endif %}
+
+</div>
+
+
+<div style="margin: 8em 1em 1em 3em; ">
+    <p> <strong>You might also be interested in ... </strong></p>
+    <div class="scroll" style="display: flex; flex-direction: row; overflow-x: scroll; padding: 0; ">
+
+        {% include 'blocks/products.html' %}
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

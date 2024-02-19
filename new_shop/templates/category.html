@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+{% include 'blocks/sales.html' %}
+
+<div class="central">
+
+    <div class="central-inner" style="margin-bottom: 6em; ">
+
+        {% if cat_products %}
+
+        <div class="search-output">
+            <table style="width: 100%">
+                {% for product in cat_products %}
+                <tr>
+                    <td style="width: 20%;">
+                        <div style="width: 6em; height: 6em; margin: .5em 1em; overflow: hidden;"><img
+                                src="{{product.image.url}}" alt="photo" style="width: 100%; height: auto;"></div>
+                    </td>
+
+                    <td style="width: 40%;">
+                        <strong>{{product.name}}</strong><br>
+                        {{product.description}} <br>
+                        <span><strong>$ {{product.price}}</strong>  </span>
+                        {% if product.on_sale %}
+                        <span class="on_sale"> Sale! </span>
+                        {% endif %}
+                    </td>
+                    <td style="width: 40%;">
+
+                        <a href="{% url 'product_details' product.id %}">
+                            <button
+                                style="color: #ffb703; border: 2px solid #ffb703; background-color: white; margin: 0 0 0 2em;">
+                                Read more</button>
+                        </a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+        {% else %}
+
+        <p style="opacity: .5;"><i>No products in the category "{{this_category}}"</i></p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div style="margin: 8em 1em 1em 3em; ">
+        <p> <strong>You might also be interested in ... </strong></p>
+        <div class="scroll" style="display: flex; flex-direction: row; overflow-x: scroll; padding: 0; ">
+
+            {% include 'blocks/products.html' %}
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

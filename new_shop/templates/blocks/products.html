@@ -1,0 +1,32 @@
+<div class="central scroll">
+    {% for product in all_products %}
+
+    <div class="product-card-wrapper">
+        <a href="{% url 'product_details' product.id %}">
+            <div class="product-card">
+                <div class="product-card-img"><img src="{{product.image.url}}" alt="image"
+                        style="width: 100%; height: auto;"></div>
+                <div class="product-card-name"><strong>{{product.name}}</strong></div>
+                <div class="product-card-desc">
+                   <div class="product-card-desc-inner">
+			 {{product.description}}</div></div>
+                <div class="product-price">
+                    <span><strong>$ {{product.price}}</strong></span>
+                    {% if product.on_sale %}
+                    <span class="on_sale"><i></i> &#8211;{{product.on_sale}}%</span>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+        <form action="{% url 'add_cart' product.id %}" method="POST">
+            {% csrf_token %}
+            <div class="addcart" style="padding: 1em 0;">{{form.quantity}} </div>
+            <button type="submit" style="background-color: #48cae4; color: white; ">Add
+                to cart</button>
+
+        </form>
+
+    </div>
+
+    {% endfor %}
+</div>

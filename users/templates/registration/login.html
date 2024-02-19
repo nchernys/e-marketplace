@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+{% load crispy_forms_tags %}
+
+<div class="central central-inner">
+    <div class="login-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+
+            <button type="submit" style="background-color: #fca311; color: white;">Login </button>
+        </form>
+        If you have not registered yet, please <a href="{% url 'register' %}"
+            class="registration"><strong>register</strong></a>.
+    </div>
+</div>
+{% endblock %}
