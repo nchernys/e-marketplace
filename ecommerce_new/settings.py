@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-v!=edn&nm1rtitzqq=+df3#dnx_p6-%r14p-)xe@g+tjpi#y3a
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['shop-online.chernysn.tech', '82.197.92.74', 'www.shop-online.chernysn.tech']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

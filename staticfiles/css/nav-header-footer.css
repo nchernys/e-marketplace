@@ -3,16 +3,23 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100%;
   font-size: 13px;
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 /* NAGIVATION SECTION */
 
-.header,
+.header {
+  width: 100%;
+  height: 95vh;
+  background: url("media/image.jpg") cover no-repeat;
+  background-position: center;
+  flex: 1;
+  background-color: black;
+}
+
 .footer {
   background-color: rgba(0, 118, 182);
   padding: 1em;
