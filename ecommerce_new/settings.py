@@ -148,6 +148,3 @@ LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-import django_heroku
-
-django_heroku.settings(locals())
