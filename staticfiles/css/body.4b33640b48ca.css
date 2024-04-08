@@ -1,0 +1,36 @@
+.body {
+  flex: 1;
+}
+
+.central {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  padding: 0 1em;
+}
+
+.central-inner {
+  width: 100%;
+  margin: 3em auto 1em;
+}
+
+.heading-shop {
+  width: 100%;
+  padding: 1em 1em 0.5em;
+  margin: 2em 0;
+}
+
+.heading-shop h4 {
+  font-weight: 800;
+}
+
+.scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-x: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}

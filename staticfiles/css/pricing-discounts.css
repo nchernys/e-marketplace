@@ -1,9 +1,7 @@
-
 .sale-bar {
   width: auto;
   height: auto;
-  background: url("/static/images/sales-image.jpg")
-    center / cover no-repeat;
+  background: url("/static/images/sales-image.jpg") center / cover no-repeat;
 }
 
 .sale-bar .overlay {
@@ -46,22 +44,19 @@
 
 .advertisement:nth-child(2) {
   background-color: rgb(3, 162, 0);
-  background: url("/static/images/ad2.jpg")
-    center/cover no-repeat;
+  background: url("static/images/ad2.jpg") center/cover no-repeat;
   color: white;
 }
 
 .advertisement:nth-child(3) {
   background-color: rgb(51, 51, 51);
-  background: url("/static/images/ad3.jpg")
-    center/cover no-repeat;
+  background: url("/static/images/ad3.jpg") center/cover no-repeat;
   color: white;
 }
 
 .advertisement:nth-child(4) {
   background-color: rgb(51, 51, 51);
-  background: url("/static/images/ad4.jpg")
-    center/cover no-repeat;
+  background: url("/static/images/ad4.jpg") center/cover no-repeat;
   color: white;
 }
 
@@ -97,15 +92,13 @@
 
 .coupon:nth-child(1) {
   background-color: rgb(0, 96, 240);
-  background: url("/static/images/coup1.jpg")
-    center/cover no-repeat;
+  background: url("/static/images/coup1.jpg") center/cover no-repeat;
   color: white;
 }
 
 .coupon:nth-child(2) {
   background-color: rgb(3, 162, 0);
-  background: url("/static/images/coup2.jpg")
-    center/cover no-repeat;
+  background: url("/static/images/coup2.jpg") center/cover no-repeat;
   color: white;
 }
 

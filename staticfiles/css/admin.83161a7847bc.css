@@ -1,0 +1,60 @@
+.admin-page {
+  margin: 2em auto;
+  width: 100%;
+  font-size: 10px;
+  height: 100%;
+}
+
+.admin-page table {
+  width: 100%;
+}
+
+.admin-page table thead {
+  font-weight: bolder;
+}
+
+.admin-page table tr td {
+  padding: 3px;
+}
+
+.update_products {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  color: white;
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-page-upload {
+  width: 95%;
+  margin: 0 auto;
+  height: 100%;
+  font-size: 1em;
+}
+
+.admin-page-upload form select,
+.admin-page-upload form input[type="file"],
+.admin-page-upload form input[type="text"] {
+  font-size: 1em;
+}
+
+.input-group-text {
+  font-size: 1em;
+}
+.text-break a {
+  font-size: 0.8em;
+  word-break: break-all;
+}
+.admin-upload-btn button,
+.admin-page-upload button {
+  background-color: #48cae4;
+  color: white;
+  width: auto;
+  padding: 1em 2em;
+  height: 100%;
+  margin: 2em 0;
+}
