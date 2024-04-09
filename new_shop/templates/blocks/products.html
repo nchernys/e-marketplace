@@ -4,7 +4,7 @@
     <div class="product-card-wrapper">
         <a href="{% url 'product_details' product.id %}">
             <div class="product-card">
-                <div class="product-card-img"><img src="{% static 'media/' %}{{product.image}}" alt="image"
+                <div class="product-card-img"><img src="{% static 'media/uploads/' %}{{product.image}}" alt="image"
                         style="width: 100%; height: auto;"></div>
                 <div class="product-card-name"><strong>{{product.name}}</strong></div>
                 <div class="product-card-desc">
